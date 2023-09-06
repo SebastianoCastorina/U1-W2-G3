@@ -1,0 +1,51 @@
+SELECT COUNT(*) AS NumeroTotOrdini
+FROM Orders;
+
+SELECT COUNT (*) AS NumeroTotClienti 
+From  Customers
+
+SELECT COUNT (CustomerID) AS NumeroTotClientiALondra 
+FROM Customers
+WHERE City = 'London'
+
+SELECT AVG(Freight) AS MediaCostoTrasportoTuttiOrdini
+FROM Orders;
+
+SELECT AVG (Freight) AS MediaCostoTrasportoSoloOrdini
+FROM Orders 
+WHERE CustomerID = 'BOTTM'
+
+SELECT CustomerID , SUM (Freight) AS TotSpeseId
+FROM ORDERS
+GROUP BY  CustomerID
+ORDER BY  CustomerID;
+
+SELECT City, COUNT (CustomerID) AS TotClientiCittàAppartenenza
+FROM Customers
+GROUP BY City
+ORDER BY City
+
+
+SELECT OrderID, SUM (UnitPrice * Quantity) AS TotOgniOrdine
+FROM [Order Details]
+GROUP BY OrderID
+ORDER BY OrderID
+
+SELECT OrderID, SUM (UnitPrice * Quantity) AS TotSoloOrdine
+FROM [Order Details]
+GROUP BY OrderID
+HAVING OrderID = 10248
+ORDER BY OrderID
+
+SELECT COUNT (*) AS TotProdottiCategoria
+From Products
+
+SELECT ShipCountry, COUNT (*) AS TotOrdiniDiSpedizionePerPaese
+FROM Orders
+GROUP BY ShipCountry
+ORDER BY ShipCountry
+
+SELECT ShipCountry, AVG (Freight) AS MediaCostoDelTrasporto
+FROM Orders 
+GROUP BY ShipCountry
+ORDER BY ShipCountry
